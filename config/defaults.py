@@ -116,7 +116,6 @@ TEMPLATES = [
     },
 ]
 
-
 MIDDLEWARE = [
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -134,6 +133,7 @@ MIDDLEWARE = [
 
 INSTALLED_APPS = [
     'djangocms_admin_style',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -142,6 +142,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
+
     'cms',
     'menus',
     'sekizai',
@@ -149,21 +150,6 @@ INSTALLED_APPS = [
     'djangocms_text_ckeditor',
     'filer',
     'easy_thumbnails',
-    'djangocms_bootstrap4',
-    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
-    'djangocms_bootstrap4.contrib.bootstrap4_badge',
-    'djangocms_bootstrap4.contrib.bootstrap4_card',
-    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
-    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
-    'djangocms_bootstrap4.contrib.bootstrap4_content',
-    'djangocms_bootstrap4.contrib.bootstrap4_grid',
-    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
-    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
-    'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',
-    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
-    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_file',
     'djangocms_icon',
     'djangocms_link',
@@ -172,12 +158,14 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
+    'reversion',
 
     'puppin_djcms'
 ]
 
 LANGUAGES = (
     ('en', gettext('en')),
+    ('ru', gettext('ru')),
 )
 
 CMS_LANGUAGES = {
@@ -185,6 +173,13 @@ CMS_LANGUAGES = {
         {
             'code': 'en',
             'name': gettext('en'),
+            'redirect_on_fallback': True,
+            'public': True,
+            'hide_untranslated': False,
+        },
+        {
+            'code': 'ru',
+            'name': gettext('ru'),
             'redirect_on_fallback': True,
             'public': True,
             'hide_untranslated': False,
