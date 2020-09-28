@@ -160,12 +160,12 @@ INSTALLED_APPS = [
     'djangocms_video',
     'reversion',
 
-    'puppin_djcms'
+    'puppin_djcms',
+    'puppin_djcms.apps.blog'
 ]
 
 LANGUAGES = (
     ('en', gettext('en')),
-    ('ru', gettext('ru')),
 )
 
 CMS_LANGUAGES = {
@@ -173,13 +173,6 @@ CMS_LANGUAGES = {
         {
             'code': 'en',
             'name': gettext('en'),
-            'redirect_on_fallback': True,
-            'public': True,
-            'hide_untranslated': False,
-        },
-        {
-            'code': 'ru',
-            'name': gettext('ru'),
             'redirect_on_fallback': True,
             'public': True,
             'hide_untranslated': False,

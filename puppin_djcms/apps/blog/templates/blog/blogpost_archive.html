@@ -1,0 +1,73 @@
+{% extends CMS_TEMPLATE %}
+
+{% load cms_tags sekizai_tags thumbnail %}
+
+{% block content %}
+    <section id="blog-main" class="blog-main-section">
+		<div class="container">
+			<div class="row section-content">
+				<div class="blog-main-content">
+
+					{% for blog_post in object_list %}
+						<div class="blog-main-text-pic">
+							<div class="blog-item-content">
+								<div class="blog-main-pic">
+									<img src="assets/img/blog/blog-1.jpg" alt="img">
+								</div>
+								<!-- //blog-pic -->
+
+								<div class="blog-main-text">
+									<div class="blog-meta mt20 ul-li">
+										<ul class="meta-list">
+											<li><a href="#">{{ blog_post.publication_datetime|date:"F j\, Y" }} / </a></li>
+											<li><a href="#">{{ blog_post.author }} / </a></li>
+											<li><a href="#">{{ blog_post.categories }}</a></li>
+										</ul>
+									</div>
+									<!-- // .blog-meta -->
+
+									<div class="blog-main-link deep-black mt20">
+										<h2><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.headline }}</a></h2>
+									</div>
+									<!-- //.blog-main-link -->
+
+									<div class="blog-read-more mt15 text-capitalize">
+<!--										<a href="{{ blog_post.get_absolute_url }}">read more<span class="ti-arrow-right"></span></a>-->
+									</div>
+								</div>
+								<!-- // .blog-main-text -->
+							</div>
+						</div>
+						<!-- //.blog-main-text-pic -->
+					{% endfor %}
+				</div>
+
+				{% if is_paginated %}
+					<div class="blog-pagination text-center">
+						<ul class="pagination">
+							{% if page_obj.has_previous %}
+								<li><a href="?page={{ page_obj.previous_page_number }}"><span class="ti-arrow-left"></span></a></li>
+							{% endif %}
+
+							{% for i in page_obj.paginator.page_range %}
+								{% if page_obj.number == i %}
+									<li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+								{% else %}
+									<li><a href="?page={{ i }}">{{ i }}</a></li>
+								{% endif %}
+							{% endfor %}
+
+							{% if page_obj.has_next %}
+								<li><a href="?page={{ page_obj.next_page_number }}"><span class="ti-arrow-right"></span></a></li>
+							{% endif %}
+						</ul>
+					</div>
+				{% endif %}
+
+			</div><!--  /.row -->
+		</div><!--  /.container-->
+	</section>
+	<!-- End of blog page section
+		============================================= -->
+{% endblock content %}
+
