@@ -35,8 +35,8 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.headline
 
-    # def get_absolute_url(self):
-    #     return reverse('blog:blog_post_detail', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('blog:blog_post_detail', kwargs={'slug': self.slug})
 
     def get_categories(self):
         return ', '.join([str(category) for category in self.categories.all()])

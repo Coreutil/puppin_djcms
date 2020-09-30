@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.views.generic import DetailView
 from django.views.generic.dates import ArchiveIndexView
 from django.utils import timezone
 
@@ -27,5 +28,14 @@ class BlogArchiveView(ArchiveIndexView):
 
     # def get_context_data(self, *, object_list=None, **kwargs):
 
+
+class BlogPostDetailView(DetailView):
+    model = BlogPost
+
+    def get_queryset(self):
+        qs = super(BlogPostDetailView, self).get_queryset()
+        qs = qs.filter(published=True,
+                       publication_datetime__lte=timezone.now())
+        return qs
 
 
