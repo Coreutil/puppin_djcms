@@ -12,16 +12,23 @@
 						<div class="blog-main-text-pic">
 							<div class="blog-item-content">
 								<div class="blog-main-pic">
-									<img src="assets/img/blog/blog-1.jpg" alt="img">
+									<img src="{{ blog_post.image.url }}" alt="img">
 								</div>
 								<!-- //blog-pic -->
 
 								<div class="blog-main-text">
 									<div class="blog-meta mt20 ul-li">
 										<ul class="meta-list">
-											<li><a href="#">{{ blog_post.publication_datetime|date:"F j\, Y" }} / </a></li>
-											<li><a href="#">{{ blog_post.author }} / </a></li>
-											<li><a href="#">{{ blog_post.categories }}</a></li>
+											<li>{{ blog_post.publication_datetime|date:"F j\, Y" }} / </li>
+											{% if blog_post.author %}
+												<li><a href="#">{{ blog_post.author }} / </a></li>
+											{% endif %}
+
+											<li>
+												{% for category in blog_post.categories.all %}
+													<a href="{% url 'blog:archive' category_slug=category.slug %}">{{ category.name }}</a>
+												{% endfor %}
+											</li>
 										</ul>
 									</div>
 									<!-- // .blog-meta -->
@@ -32,7 +39,7 @@
 									<!-- //.blog-main-link -->
 
 									<div class="blog-read-more mt15 text-capitalize">
-<!--										<a href="{{ blog_post.get_absolute_url }}">read more<span class="ti-arrow-right"></span></a>-->
+										<a href="{{ blog_post.get_absolute_url }}">read more<span class="ti-arrow-right"></span></a>
 									</div>
 								</div>
 								<!-- // .blog-main-text -->
