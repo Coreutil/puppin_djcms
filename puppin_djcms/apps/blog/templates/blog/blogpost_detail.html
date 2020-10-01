@@ -1,0 +1,56 @@
+{% extends CMS_TEMPLATE %}
+
+{% load cms_tags sekizai_tags thumbnail %}
+
+{% block content %}
+    <section id="blog-single" class="blog-single-content pt90">
+        <div class="container">
+            <div class="row">
+                <div class="blog-single-content">
+                    <div class="row">
+                        <div class="col-sm-9">
+
+                            <div class="blog-single-right-side">
+                                <div class="blog-single-main-img">
+                                    <img src="{{ object.image.url }}" alt="image">
+                                </div>
+
+                                <div class="blog-main-link deep-black mt20">
+                                    <h2>{% render_model object 'headline' %}</h2>
+                                </div>
+                                <!-- //.blog-main-link -->
+
+
+                                <div class="blog-meta mt10  ul-li">
+                                    <ul class="meta-list">
+                                        <li>{{ object.publication_datetime|date:"F j\, Y" }} / </li>
+
+                                        {% if blog_post.author %}
+                                            <li><a href="#">{{ blog_post.author }} / </a></li>
+                                        {% endif %}
+
+                                        <li>
+                                            {% for category in object.categories.all %}
+                                                <a href="{% url 'blog:archive' category_slug=category.slug %}">{{ category.name }}</a>
+                                            {% endfor %}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- //.blog-meta -->
+
+                                <div class="blog-single-text mt30">
+                                    {% render_placeholder object.post_content %}
+                                </div>
+                                <!-- // .blog-single-text -->
+
+                            </div>
+                            <!-- //.blog-single-right-side -->
+
+                        </div><!--  /.col-sm-9 -->
+
+                    </div><!--  /.row -->
+                </div><!-- //.blog-single-content -->
+            </div><!--  /.row -->
+        </div><!--  /.container -->
+    </section>
+{% endblock content%}
