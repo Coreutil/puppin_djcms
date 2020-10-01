@@ -4,6 +4,7 @@ from django.contrib import admin
 
 from cms.admin.placeholderadmin import PlaceholderAdminMixin
 
+from .forms import BlogPostAdminForm
 from .models.blog_category import BlogCategory
 from .models.blog_post import BlogPost
 
@@ -31,6 +32,12 @@ class BlogPostAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
                        'image')
         }),
     )
+    form = BlogPostAdminForm
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(BlogPostAdmin, self).get_form(request, obj, *kwargs)
+        form.current_user = request.user.id if request.user else None
+        return form
 
 
 admin.site.register(BlogPost, BlogPostAdmin)

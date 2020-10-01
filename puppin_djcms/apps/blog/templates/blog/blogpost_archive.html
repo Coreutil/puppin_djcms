@@ -1,6 +1,6 @@
 {% extends CMS_TEMPLATE %}
 
-{% load cms_tags sekizai_tags thumbnail %}
+{% load cms_tags sekizai_tags thumbnail extra_cms_tags %}
 
 {% block content %}
     <section id="blog-main" class="blog-main-section">
@@ -21,7 +21,7 @@
 										<ul class="meta-list">
 											<li>{{ blog_post.publication_datetime|date:"F j\, Y" }} / </li>
 											{% if blog_post.author %}
-												<li><a href="#">{{ blog_post.author }} / </a></li>
+												<li><a href="#">{% user_name blog_post.author %} / </a></li>
 											{% endif %}
 
 											<li>
