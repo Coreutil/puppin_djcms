@@ -31,7 +31,7 @@
 
                                         <li>
                                             {% for category in object.categories.all %}
-                                                <a href="{% url 'blog:archive' category_slug=category.slug %}">{{ category.name }}</a>
+                                                <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
                                             {% endfor %}
                                         </li>
                                     </ul>
@@ -48,6 +48,32 @@
 
                         </div><!--  /.col-sm-9 -->
 
+                        <div class="col-sm-3">
+                            <div class="blog-single-right-side-bar">
+                                <div class="blog-single-right-side-content mt50">
+                                    <div class="blog-single-side-title text-capitalize">
+                                        <h2 class="widgettitle deep-black">Categories</h2>
+                                    </div>
+                                    <div class="category-item mt20 ul-li">
+                                        {% categories_list %}
+                                    </div>
+                                </div>
+                                <!-- //.blog-single-right-side-content -->
+
+                                <div class="blog-single-right-side-content mt50">
+                                    <div class="blog-single-side-title text-capitalize">
+                                        <h2 class="widgettitle deep-black">Recent Post</h2>
+                                    </div>
+                                    <div class="recent-post-list mt30">
+                                        {% recent_posts %}
+                                    </div>
+                                </div>
+                                <!-- //.blog-single-right-side-content -->
+
+                            </div>
+                            <!-- //.blog-single-right-side-bar -->
+                        </div>
+                        <!--  /.col-sm-3 -->
                     </div><!--  /.row -->
                 </div><!-- //.blog-single-content -->
             </div><!--  /.row -->

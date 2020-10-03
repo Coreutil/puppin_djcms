@@ -1,0 +1,20 @@
+{% load cms_tags thumbnail %}
+
+<div class="recent-blog-item">
+    {% for post in recent_posts %}
+    <div class="side-tab-img-text">
+        <div class="rec-img">
+            {% thumbnail post.image "100x80" crop as post_image %}
+            <img src="{{ post_image.url }}" width="{{ post_image.width }}" height="{{ post_image.height }}" alt="image">
+        </div>
+        <div class="side-tab-text ul-li">
+            <div class="rec-link">
+                <h3><a href="{{ post.get_absolute_url }}">{{ post }}</a></h3>
+            </div>
+            <ul class="rec-nws-meta">
+                <li><i class="ti-timer"></i> {{ post.publication_datetime|date:"b j\, Y" }} </li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
