@@ -10,6 +10,15 @@ from filer.fields.image import FilerImageField
 from cms.models.fields import PlaceholderField
 
 
+class BlogPublishedPostsManager(models.Manager):
+    """
+        Filters out all unpublished posts and posts with a publication
+        date in the future
+    """
+    def get_queryset(self):
+        return super().get_queryset().filter(published=True, publication_datetime__lte=timezone.now())
+
+
 class BlogPost(models.Model):
     headline = models.CharField(u'Headline', blank=False, default='', max_length=255)
     slug = models.SlugField(u'Slug', blank=False, default='', unique=True, max_length=255)
@@ -26,6 +35,7 @@ class BlogPost(models.Model):
     post_content = PlaceholderField('post_content')
 
     objects = models.Manager()
+    published_objects = BlogPublishedPostsManager()
 
     class Meta:
         app_label = 'blog'

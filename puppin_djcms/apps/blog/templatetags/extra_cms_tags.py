@@ -6,6 +6,7 @@ from django.utils import timezone
 
 from ..models.blog_post import BlogPost
 from ..models.blog_category import BlogCategory
+from ..settings import RECENT_POSTS_NUM
 
 
 register = template.Library()
@@ -29,7 +30,6 @@ def get_all_categories(context):
 
 @register.inclusion_tag('blog/recent_posts_list.html', takes_context=True, name='recent_posts')
 def get_recent_posts(context):
-    posts = BlogPost.objects.filter(
-        published=True, publication_datetime__lte=timezone.now())[:4]
+    posts = BlogPost.published_objects.all()[:RECENT_POSTS_NUM]
     context.update({'recent_posts': posts})
     return context

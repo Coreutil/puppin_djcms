@@ -5,13 +5,14 @@ from django.views.generic.dates import ArchiveIndexView
 from django.utils import timezone
 
 from .models.blog_post import BlogPost
+from .settings import ARCHIVE_POSTS_PAGINATE_BY
 
 
 class BlogArchiveView(ArchiveIndexView):
     allow_empty = True
     date_field = 'publication_datetime'
     model = BlogPost
-    paginate_by = 9  # set in config
+    paginate_by = ARCHIVE_POSTS_PAGINATE_BY
 
     def get_queryset(self):
         qs = super(BlogArchiveView, self).get_queryset()
