@@ -1,0 +1,12 @@
+{% extends "fullwidth.html" %}
+{% load cms_tags %}
+
+{% block content %}
+	{% placeholder "content" %}
+{% endblock content %}
+
+{% block footer %}
+	<footer>
+		{% static_placeholder "dark_footer" %}
+	</footer>
+{% endblock footer %}

@@ -161,7 +161,8 @@ INSTALLED_APPS = [
     'reversion',
 
     'puppin_djcms',
-    'puppin_djcms.apps.blog'
+    'puppin_djcms.apps.blog',
+    'puppin_djcms.plugins'
 ]
 
 LANGUAGES = (
@@ -187,8 +188,7 @@ CMS_LANGUAGES = {
 
 CMS_TEMPLATES = (
     ('fullwidth.html', 'Fullwidth'),
-    ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
+    ('home.html', 'Home'),
 )
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'

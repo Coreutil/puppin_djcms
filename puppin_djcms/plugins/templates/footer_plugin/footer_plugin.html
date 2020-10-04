@@ -1,0 +1,25 @@
+<div class="footer-area {% if instance.dark_background %} footer-2 {% endif %}">
+    <div class="container">
+        <div class="row">
+            <div class="copy-right-area {% if instance.border_top %} border-top {% endif %} text-center">
+                {% if instance.social_panel %}
+                    <div class="page-head-social-item ul-li">
+                        <ul class="page-head-social-list">
+                            <li><a href="#"><span class="ti-facebook"></span></a></li>
+                            <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
+                            <li><a href="#"><span class="ti-google"></span></a></li>
+                            <li><a href="#"><span class="ti-instagram"></span></a></li>
+                        </ul><!-- /.page-head-social-list -->
+                    </div>
+                {% endif %}
+                <span {% if not instance.social_panel %} class="pt50 table-display" {% endif %}>{{ instance.copyright }}</span>
+            </div>
+            <!-- //copy-right-area -->
+        </div><!--  /.container -->
+    </div><!--  /.row-->
+    {% if instance.scrollup_button %}
+        <div class="up">
+            <a href="#" id="scrolluptop" class="scrollup custom"><span class="back-top deep-black text-uppercase">back top</span></a>
+        </div>
+    {% endif %}
+</div><!--  /.footer-area -->
