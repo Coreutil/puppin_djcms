@@ -1,0 +1,47 @@
+{% load cms_tags plugins_tags %}
+
+<section id="page-head" class="page-head-section">
+    <div class="page-head__information">
+        <div class="page-head-overlay"></div>
+        <div id="page-head-effect" class="page-head-effect">
+            <canvas id="demo-canvas"></canvas>
+        </div>
+        <!-- // page-head-style -->
+        <div class="container">
+            <div class="row">
+                <div class="banner-content">
+                    <div class="page-head-content">
+                        <div class="page-head-title text-capitalize pb40">
+                            <h1>{% page_attribute "page_title" %}</h1>
+                            <span class="descrip">{% page_attribute "meta_description" %}</span>
+                        </div>
+
+                        {% if instance.breadcrumbs %}
+                            {% breadcrumbs_list %}
+                        {% endif %}
+
+                        {% if instance.social_panel %}
+                            <div class="page-head-social">
+                                <div  class="social-title text-uppercase">
+                                    <span>socials</span>
+                                </div>
+                                <!-- //title -->
+                                <div class="page-head-social-item ul-li">
+                                    <ul class="page-head-social-list">
+                                        <li><a href="#"><span class="ti-facebook"></span></a></li>
+                                        <li><a href="#"><span class="ti-twitter-alt"></span></a></li>
+                                        <li><a href="#"><span class="ti-google"></span></a></li>
+                                        <li><a href="#"><span class="ti-instagram"></span></a></li>
+                                    </ul><!-- /.page-head-social-list -->
+                                </div><!-- /.page-head-social-item -->
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-head__image">
+        <img src="{{ instance.image.url }}">
+    </div>
+</section>

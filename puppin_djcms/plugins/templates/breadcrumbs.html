@@ -1,0 +1,11 @@
+<div class="breadcrumb-item text-capitalize">
+    <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+            {% if forloop.last %}
+                <li>{{ breadcrumb.menu_title }}</li>
+            {% else %}
+                <li><a href="{{ breadcrumb.url }}">{{ breadcrumb.menu_title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
