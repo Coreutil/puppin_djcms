@@ -106,7 +106,8 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'sekizai.context_processors.sekizai',
                 'django.template.context_processors.static',
-                'cms.context_processors.cms_settings'
+                'cms.context_processors.cms_settings',
+                'puppin_djcms.context_processors.puppin_settings'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -203,3 +204,6 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+# Default image for showing in page head background
+DEFAULT_HEAD_IMAGE_URL = STATIC_URL + 'img/banner/banner-1.jpg'

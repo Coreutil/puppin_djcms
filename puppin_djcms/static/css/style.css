@@ -1258,20 +1258,3 @@ End of Blog single page
     clear: both;
     display: table;
 }
-
-.page-head__information {
-    position: absolute;
-    width: 100%;
-    height: 53%;
-    bottom: 42rem;
-    z-index: 2;
-}
-
-.page-head__image {
-    /* height: 100%;
-    transition: all 0.25s;
-    font-size: 0;
-    white-space: nowrap;
-    position: relative;
-    left: 0; */
-}

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.conf import settings
 from django.utils import timezone
 
 
@@ -25,3 +26,12 @@ def get_breadcrumbs_list(request):
             'url': breadcrumb.get_absolute_url()
         })
     return breadcrumbs_list
+
+
+BASIC_CONTEXT = {
+    'DEFAULT_HEAD_IMAGE_URL': settings.DEFAULT_HEAD_IMAGE_URL
+}
+
+
+def get_basic_context(request):
+    return BASIC_CONTEXT
