@@ -1,0 +1,63 @@
+<section id="service" class="service-section pt90 pb40">
+    <div class="container">
+        <div class="row">
+            <div class="section-title text-capitalize deep-black pb75">
+                <h2>{{ instance.title }}</h2>
+            </div>
+            <!-- //title -->
+
+            <div class="latest-blog-content">
+                <div class="row">
+                    {% for post in recent_posts %}
+                    <div class="col-md-4">
+                        <div class="latest-blog-text-pic">
+                            <div class="latest-blog-img mb10">
+                                <img src="{{ post.image.url }}" alt="img">
+                                <div class="blog-meta mt20 ul-li">
+                                    <ul class="meta-list">
+                                        <li>{{ post.publication_datetime|date:"b j\, Y" }}  /  </li>
+                                        {% if post.author %}
+                                            <li>{{ post.author }} /  </li>
+                                        {% endif %}
+                                        <li>
+                                            {% for category in post.categories.all %}
+                                                <a href="{% url 'blog:archive' category_slug=category.slug %}">{{ category.name }}</a>
+                                            {% endfor %}
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- //.latest-blog-img -->
+
+                            <div class="latest-blog-text">
+                                <div class="blog-head">
+                                    <h2><a href="{{ post.get_absolute_url }}">{{ post.headline }}</a></h2>
+                                </div>
+                                <!-- //.blog-details -->
+                                <div class="blog-read-more text-capitalize pull-left">
+                                    <a href="{{ post.get_absolute_url }}">read more<span class="ti-arrow-right"></span></a>
+                                </div>
+                                <!-- //.blog-read-more -->
+
+                                <div class="latest-blog-comments text-capitalize pull-right">
+                                    <a href="#"><span class="ti-comments"> 5 Comments</span></a>
+                                </div>
+                                <!-- //.latest-blog-comments -->
+                            </div>
+
+                        </div>
+                        <!-- //.latest-blog-text-pic -->
+                    </div>
+                    <!-- //.col-md-4 -->
+                    {% endfor %}
+
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.latest-blog-content -->
+
+
+        </div><!--  row -->
+    </div><!--  container-->
+</section>
